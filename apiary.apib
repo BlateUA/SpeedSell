@@ -24,9 +24,42 @@ Change information in the lot description
 + Response 204
 
 ## Bids [/bids]
-###Show all user bids [GET]
-You can get list of all bids made by some user.
 
+###Make bid[POST]
+User can choose the lot and make his pown bid
+
++ Request (application/json)
+
+        {
+            "amount": "240",
+            "ownerId": "7531866",
+            "lotId" : "457861"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /bids/32
+
+    + Body
+
+            {
+                "Id":"2345124",
+                "bidDate": "2016-10-10T10:00:00",
+                "amount": "240",
+                "ownerId": "7531866",
+                "lotId" : "457861"
+            }
+
+
+#GET /bids/user/{id}
+You can get list of all bids made by some user.
++ Request (application/json)
+
+        {
+            "ownerId": "7531864"
+        }
 
 + Response 200 (application/json)
 
@@ -60,14 +93,90 @@ You can get list of all bids made by some user.
         {
             "error" : "You are unauthorized to make this request." 
         }
-###Show all lot bids[GET]
+        
+#GET /bids/lot/{id}
 Show the all history of lots, who and when bids was made.
-###Show best bids[GET]
++ Request (application/json)
+
+        {
+            "lotId": "457861"
+        }
+
++ Response 200 (application/json)
+
+       [
+        {
+            "Id":"2345123",
+            "bidDate": "2016-10-10T09:00:00",
+            "amount": "234",
+            "ownerId": "7531864",
+            "lotId" : "457861"
+            
+        },
+        {
+            "Id":"2345124",
+            "bidDate": "2016-10-10T10:00:00",
+            "amount": "240",
+            "ownerId": "7531866",
+            "lotId" : "457861"
+            
+        }
+        ]
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+#GET /bids/best/lot/{id}        
 Returns the best bets of lots
-###Make bid[PUT]
-User can choose the lot and make his pown bid
-###Cancel bid[DELETE]
+
++ Request (application/json)
+
+        {
+            "lotId": "457861"
+        }
+
+
++ Response 200 (application/json)
+
+        {
+            "Id":"2345124",
+            "bidDate": "2016-10-10T10:00:00",
+            "amount": "240",
+            "ownerId": "7531866",
+            "lotId" : "457861"
+            
+        }
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
+
+#DELETE /bids/delete/{id}
 If user change his mind  and he can cancel his bid 
+
++ Request (application/json)
+
+        {
+            "lotId": "457861"
+        }
+
++ Response 200 (text/plain)
+
+        {
+                The bid was successful canceled
+            
+        }
+        
++ Response 404 (text/plain)
+
+        {
+                Not Found
+            
+        }
 
 
 ## Feedbacks [/feedbacks]
@@ -88,6 +197,63 @@ If user change his mind  and he can cancel his bid
             }
         ]
         
+### Create new feedback [POST]
+Creating new feedback.
+
++ Request (application/json)
+
+        {
+            "Id": "457812",
+            "buyerId": "6548987",
+            "sellerId": "1234566",
+            "lotId" : "564194",
+            "mark" : "neutral",
+            "title" : "Fast send, lot is not so good",
+            "feedback" : "Fast send, lot is not so good"
+        }
+        
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /feedbacks/457812
+
+    + Body
+
+            {
+                "Id": "457812",
+                "buyerId": "6548987",
+                "sellerId": "1234566",
+                "lotId" : "564194",
+                "mark" : "neutral",
+                "title" : "Fast send, lot is not so good",
+                "feedback" : "Fast send, lot is not so good"
+            }
+
+
+###Delete feedback [DELETE]
+Deleting feedback by id.
+
++ Request (application/json)
+
+        {
+            "Id": "457812",
+        }
+        
+
++ Response 200 (application/json)
+
+        {
+            "OK" : "Feedback successfully deleted"
+        }
+        
++ Response 401 (text/plain)
+
+        Please authorize to see this!
+        
++ Response 404 (text/plain)
+
+        No such feedback.
 
 #GET /users/{id}/feedbacks
 Show feedbacks performed by/for some user.
@@ -150,11 +316,6 @@ Show feedbacks writed for some lot.
 + Response 404 (text/plain)
 
         No feedbacks yet.
-
-###Create feedback [PUT]
-
-###Delete feedback [DELETE]
-Deleting 
 
 
 ## Payments [/payments]
