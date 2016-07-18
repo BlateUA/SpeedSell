@@ -7,7 +7,22 @@ SpeedSell is a resource that shows main features of it's parts (Lots,
 Bids, Feedbacks and Payments.
 
 ## Lots [/lots]
-###List of lots [GET]
+#GET /lots
+Show all available lots
+#GET /lots/{id}
+Show one particular lot 
+#GET /users/{id}/lots
+Show all lots created by some user
+#GET /categories/{id}/lots
+Show all lots in some category
+##Update lot description  [PATCH /lots/{id}]
+Change information in the lot description
+## Delete a Lot [DELETE /lots/{id}]
+
++ Parameters
+    + id (string) ... Id of the lot
+
++ Response 204
 
 ## Bids [/bids]
 ###Show all user bids [GET]
