@@ -162,22 +162,36 @@ Show all lots in some category
         
         No lots yet.
         
-        
-##Update lot description  [PATCH /lots/{id}]
-Change information in the lot description
-## Delete a Lot [DELETE /lots/{id}]
-
-+ Parameters
-    + id (string) ... Id of the lot
-
-+ Response 204
-
-#POST Create a lot [POST]
+###Delete lot [DELETE]
+Deleting lot by id.
 
 + Request (application/json)
 
         {
-      
+            "Id": "4562804",
+        }
+        
+
++ Response 200 (application/json)
+
+        {
+            "OK" : "Lot successfully deleted"
+        }
+        
++ Response 401 (text/plain)
+
+        Please authorize to see this!
+        
++ Response 404 (text/plain)
+
+        No such lot.
+        
+### Create new lot [POST]
+Creating new lot.
+
++ Request (application/json)
+
+        {
                 "name": "Lenovo ThinkPad E430c",
                 "info": "New laptop for home usage",
                 "category": {
@@ -192,10 +206,15 @@ Change information in the lot description
                 "duration": "3600",
                 "redemtion": "1500"
         }
+        
++ Response 201 (application/json)
 
-+ Response 201
+    + Headers
 
-        {
+            Location: /lots/4562804
+
+    + Body
+            {
                 "Id": "4562804",
                 "name": "Lenovo ThinkPad E430c",
                 "info": "New laptop for home usage",
@@ -210,8 +229,8 @@ Change information in the lot description
                 "startDate": "2016-07-12T09:00:00",
                 "duration": "3600",
                 "redemtion": "1500"
-
         }
+
 
 ## Bids [/bids]
 
@@ -253,7 +272,7 @@ You can get list of all bids made by some user.
 
 + Response 200 (application/json)
 
-       [
+        [
         {
             "Id":"2345123",
             "bidDate": "2016-10-10T09:00:00",
@@ -271,7 +290,6 @@ You can get list of all bids made by some user.
             
         }
         ]
-    
 + Response 404 (application/json)
 
         { 
@@ -294,7 +312,7 @@ Show the all history of lots, who and when bids was made.
 
 + Response 200 (application/json)
 
-       [
+        [
         {
             "Id":"2345123",
             "bidDate": "2016-10-10T09:00:00",
@@ -312,7 +330,8 @@ Show the all history of lots, who and when bids was made.
             
         }
         ]
-    
+
+
 + Response 404 (application/json)
 
         { 
