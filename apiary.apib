@@ -12,6 +12,40 @@ Bids, Feedbacks and Payments.
 ## Bids [/bids]
 ###Show all user bids [GET]
 You can get list of all bids made by some user.
+
+
++ Response 200 (application/json)
+
+       [
+        {
+            "Id":"2345123",
+            "bidDate": "2016-10-10T09:00:00",
+            "amount": "234",
+            "ownerId": "7531864",
+            "lotId" : "457861"
+            
+        },
+        {
+            "Id":"2345188",
+            "bidDate": "2016-11-10T09:00:00",
+            "amount": "2234",
+            "ownerId": "7531864",
+            "lotId" : "4578"
+            
+        }
+        ]
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+        
++ Response 401 (application/json)
+
+        {
+            "error" : "You are unauthorized to make this request." 
+        }
 ###Show all lot bids[GET]
 Show the all history of lots, who and when bids was made.
 ###Show best bids[GET]
@@ -40,15 +74,14 @@ If user change his mind  and he can cancel his bid
             }
         ]
         
-###List of feedbacks by sellerId [GET]
 
-+ Request (application/json)
+#GET /users/{id}/feedbacks
+Show feedbacks performed by/for some user.
+       
++ Parameters
 
-        {
-            "sellerId": "7564218"
-        }
-
-
+    + Id: `1` (number, required) - Id of a user.
+    
 + Response 200 (application/json)
 
         [
@@ -63,37 +96,23 @@ If user change his mind  and he can cancel his bid
             }
         ]
         
-###List of feedbacks by buyerId [GET]
++ Response 401 (text/plain)
 
-+ Request (application/json)
+        Please authorize to see this!
++ Response 403 (text/plain)
 
-        {
-            "buyerId": "95431764"
-        }
+        You are not Admin. No way to get this.
++ Response 404 (text/plain)
 
+        No feedbacks yet.
 
-+ Response 200 (application/json)
+#GET /lots/{id}/feedbacks
+Show feedbacks writed for some lot.
+       
++ Parameters
 
-        [
-            {
-                "Id": "7531864",
-                "buyerId": "95431764",
-                "sellerId": "7564218",
-                "lotId" : "457861",
-                "mark" : "good",
-                "title" : "Everything was ok",
-                "feedback" : "Fast responce, good lot"
-            }
-        ]
-###List of feedbacks by lotId [GET]
-
-+ Request (application/json)
-
-        {
-            "lotId": "457861"
-        }
-
-
+    + id: `1` (number, required) - Id of a lot.
+    
 + Response 200 (application/json)
 
         [
@@ -108,10 +127,21 @@ If user change his mind  and he can cancel his bid
             }
         ]
         
++ Response 401 (text/plain)
+
+        Please authorize to see this!
++ Response 403 (text/plain)
+
+        You are not Admin. No way to get this.
++ Response 404 (text/plain)
+
+        No feedbacks yet.
+
 ###Create feedback [PUT]
 
 ###Delete feedback [DELETE]
 Deleting 
+
 
 ## Payments [/payments]
 ###List of payments [GET]
