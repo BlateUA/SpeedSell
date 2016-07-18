@@ -142,6 +142,37 @@ Show list of payments
     
         No payments yet.
 
+## Create a Payment [POST]
++ Attributes
+    + id (number)
+    + paymentAmount (number) - 322
+    + payDate (string) - 2016-07-18T1:58:00.620Z
+    + personId (number)
+    + lotId (number)
+    + paymentTypeId (number)
+ 
++ Request (application/json)
+
+        {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+        }
+
++ Response 201
+
+        {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+        }
+
 #GET /users/{id}/payments
 
         Show list of user's payments.
