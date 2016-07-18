@@ -267,7 +267,7 @@ User can choose the lot and make his pown bid
             }
 
 
-#GET /bids/user/{id}
+#GET /users/{id}/bids
 You can get list of all bids made by some user.
 + Request (application/json)
 
@@ -307,8 +307,8 @@ You can get list of all bids made by some user.
             "error" : "You are unauthorized to make this request." 
         }
         
-#GET /bids/lot/{id}
-Show the all history of lots, who and when bids was made.
+#GET /lots/{id}/bids
+Show the history of bids, who and when made bids.
 + Request (application/json)
 
         {
@@ -342,8 +342,8 @@ Show the all history of lots, who and when bids was made.
         { 
             "error": "Resource not found" 
         }
-#GET /bids/best/lot/{id}        
-Returns the best bets of lots
+#GET /lot/{id}/best/        
+Returns the best bid of lot
 
 + Request (application/json)
 
