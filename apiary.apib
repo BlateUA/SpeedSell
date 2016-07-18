@@ -29,7 +29,79 @@ Bids, Feedbacks and Payments.
                 "redemtion": "150"
             }
         ]
+
+
+### Create new lot [POST]
+Creating new lot.
+
++ Request (application/json)
+
+        {
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": {
+                                "name": "Laptops",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
+        }
         
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /lots/4562804
+            
+    + Body
+    
+            {
+            "Id": "4562804",
+            "name": "Lenovo ThinkPad E430c",
+            "info": "New laptop for home usage",
+            "category": {
+            "name": "Laptops",
+            "parentCategory": "Electronics"
+            },
+            "state": "CREATED",
+            "buyPrice": "1200",
+            "commission": "30", 
+            "startPrice": "1000",
+            "startDate": "2016-07-12T09:00:00",
+            "duration": "3600",
+            "redemtion": "1500"
+            }
+            
+###Delete lot [DELETE]
+Deleting lot by id.
+
++ Request (application/json)
+
+        {
+            "Id": "4562804",
+        }
+        
+
++ Response 200 (application/json)
+
+        {
+            "OK" : "Lot successfully deleted"
+        }
+        
++ Response 401 (text/plain)
+
+        Please authorize to see this!
+        
++ Response 404 (text/plain)
+
+        No such lot.
+        
+
 #GET /lots/{id}
 Show one particular lot 
 
@@ -162,74 +234,7 @@ Show all lots in some category
         
         No lots yet.
         
-###Delete lot [DELETE]
-Deleting lot by id.
 
-+ Request (application/json)
-
-        {
-            "Id": "4562804",
-        }
-        
-
-+ Response 200 (application/json)
-
-        {
-            "OK" : "Lot successfully deleted"
-        }
-        
-+ Response 401 (text/plain)
-
-        Please authorize to see this!
-        
-+ Response 404 (text/plain)
-
-        No such lot.
-        
-### Create new lot [POST]
-Creating new lot.
-
-+ Request (application/json)
-
-        {
-                "name": "Lenovo ThinkPad E430c",
-                "info": "New laptop for home usage",
-                "category": {
-                                "name": "Laptops",
-                                "parentCategory": "Electronics"
-                            },
-                "state": "CREATED",
-                "buyPrice": "1200",
-                "commission": "30", 
-                "startPrice": "1000",
-                "startDate": "2016-07-12T09:00:00",
-                "duration": "3600",
-                "redemtion": "1500"
-        }
-        
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /lots/4562804
-
-    + Body
-            {
-                "Id": "4562804",
-                "name": "Lenovo ThinkPad E430c",
-                "info": "New laptop for home usage",
-                "category": {
-                                "name": "Laptops",
-                                "parentCategory": "Electronics"
-                            },
-                "state": "CREATED",
-                "buyPrice": "1200",
-                "commission": "30", 
-                "startPrice": "1000",
-                "startDate": "2016-07-12T09:00:00",
-                "duration": "3600",
-                "redemtion": "1500"
-        }
 
 
 ## Bids [/bids]
