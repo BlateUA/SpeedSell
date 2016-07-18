@@ -118,79 +118,95 @@ Deleting
 Show list of payments
 
 + Response 200 (application/json)
-    [
-        {
-            "Id": "12481632",
-            "paymentAmount": "322",
-            "payDate": "2016-07-18T1:58:00.620Z"
-            "personId": "95431764"
-            "lotId": "457861"
-            "paymentTypeId": "1"
-        }
-    ]
+
+        [
+           {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "95431764"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+            }
+        ]
+        
 + Response 401 (text/plain)
-    Please authorize to see this!
+
+        Please authorize to see this!
+    
 + Response 403 (text/plain)
-    You are not Admin. No way to get this.
+
+        You are not Admin. No way to get this.
+    
 + Response 404 (text/plain)
-    No payments yet.
+    Ch
+        No payments yet.
 
 ###User's payments [GET]
 Show list of user's payments.
 
 + Request (application/json)
-    {
-        "personId": "1234567"
-    }
-+ Response 200 (application/json)
-    [
+
         {
-            "Id": "12481632",
-            "paymentAmount": "322",
-            "payDate": "2016-07-18T1:58:00.620Z"
             "personId": "1234567"
-            "lotId": "457861"
-            "paymentTypeId": "1"
-        },
-        
-         {
-            "Id": "12481633",
-            "paymentAmount": "333",
-            "payDate": "2016-07-18T2:00:00.620Z"
-            "personId": "1234567"
-            "lotId": "457862"
-            "paymentTypeId": "1"
         }
-    ]
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+            },
+            
+            {
+                "Id": "12481633",
+                "paymentAmount": "333",
+                "payDate": "2016-07-18T2:00:00.620Z"
+                "personId": "1234567"
+                "lotId": "457862"
+                "paymentTypeId": "1"
+            }
+        ]
 + Response 401 (text/plain)
-    Please authorize to see this!
+
+        Please authorize to see this!
 + Response 403 (text/plain)
-    You are not Admin. No way to get this.
+
+        You are not Admin. No way to get this.
 + Response 404 (text/plain)
-    No payments yet.
-    
+        
+        No payments yet.
 
 ###Show payment [GET]
 Show the payment information.
 
 + Request (application/json)
-    {
-        "Id": "12481632"
-    }
-+ Response 200 (application/json)
-    [
+        
         {
-            "Id": "12481632",
-            "paymentAmount": "322",
-            "payDate": "2016-07-18T1:58:00.620Z"
-            "personId": "1234567"
-            "lotId": "457861"
-            "paymentTypeId": "1"
+            "Id": "12481632"
         }
-    ]
++ Response 200 (application/json)
+        
+        [
+            {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+            }
+        ]
 + Response 401 (text/plain)
-    Please authorize to see this!
+
+        Please authorize to see this!
 + Response 403 (text/plain)
-    You are not Admin. No way to get this.
+    
+        You are not Admin. No way to get this.
 + Response 404 (text/plain)
-    No payments yet.
+        
+        No payments yet.
