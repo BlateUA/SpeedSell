@@ -23,7 +23,8 @@ If user change his mind  and he can cancel his bid
 
 
 ## Feedbacks [/feedbacks]
-###List of feedbacks [GET]
+###List of all feedbacks [GET]
+
 
 + Response 200 (application/json)
 
@@ -39,10 +40,76 @@ If user change his mind  and he can cancel his bid
             }
         ]
         
-###List of feedbacks by user [GET]
-###List of feedbacks by buyer [GET]
-###List of feedbacks by lot [GET]
+###List of feedbacks by sellerId [GET]
+
++ Request (application/json)
+
+        {
+            "sellerId": "7564218"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": "7531864",
+                "buyerId": "95431764",
+                "sellerId": "7564218",
+                "lotId" : "457861",
+                "mark" : "good",
+                "title" : "Everything was ok",
+                "feedback" : "Fast responce, good lot"
+            }
+        ]
+        
+###List of feedbacks by buyerId [GET]
+
++ Request (application/json)
+
+        {
+            "buyerId": "95431764"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": "7531864",
+                "buyerId": "95431764",
+                "sellerId": "7564218",
+                "lotId" : "457861",
+                "mark" : "good",
+                "title" : "Everything was ok",
+                "feedback" : "Fast responce, good lot"
+            }
+        ]
+###List of feedbacks by lotId [GET]
+
++ Request (application/json)
+
+        {
+            "lotId": "457861"
+        }
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": "7531864",
+                "buyerId": "95431764",
+                "sellerId": "7564218",
+                "lotId" : "457861",
+                "mark" : "good",
+                "title" : "Everything was ok",
+                "feedback" : "Fast responce, good lot"
+            }
+        ]
+        
 ###Create feedback [PUT]
+
 ###Delete feedback [DELETE]
 
 ## Payments [/payments]
