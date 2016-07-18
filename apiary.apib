@@ -7,13 +7,162 @@ SpeedSell is a resource that shows main features of it's parts (Lots,
 Bids, Feedbacks and Payments.
 
 ## Lots [/lots]
-Show all available lots
+###Show all available lots [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "Id": "4562803",
+                "name": "Apple Iphone 6s 128Gb Plus",
+                "info": "Sell my iphone cause i need money for smth",
+                "category": {
+                                "name": "Smartphones",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "120",
+                "commission": "10", 
+                "startPrice": "100",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "150"
+            }
+        ]
+        
 #GET /lots/{id}
 Show one particular lot 
+
++ Response 200 (application/json)
+
+            {
+                "Id": "4562803",
+                "name": "Apple Iphone 6s 128Gb Plus",
+                "info": "Sell my iphone cause i need money for smth",
+                "category": {
+                                "name": "Smartphones",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "120",
+                "commission": "10", 
+                "startPrice": "100",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "150"
+            }
+
 #GET /users/{id}/lots
 Show all lots created by some user
+
++ Parameters
+    + id: `1` (number, required) - Id of a user.
++ Response 200 (application/json)
+
+        [
+            {
+               {
+                "Id": "4562803",
+                "name": "Apple Iphone 6s 128Gb Plus",
+                "info": "Sell my iphone cause i need money for smth",
+                "category": {
+                                "name": "Smartphones",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "120",
+                "commission": "10", 
+                "startPrice": "100",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "150"
+            },
+            
+            {
+                "Id": "4562804",
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": {
+                                "name": "Laptops",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
+
+        }
+        ]
++ Response 401 (text/plain)
+
+        Please authorize to see this!
++ Response 403 (text/plain)
+
+        You are not Admin. No way to get this.
++ Response 404 (text/plain)
+        
+        No lots yet.
+        
+
 #GET /categories/{id}/lots
 Show all lots in some category
+
++ Parameters
+    + id: `1` (number, required) - Id of a category.
++ Response 200 (application/json)
+
+        [
+            {
+               {
+                "Id": "4562803",
+                "name": "Apple Iphone 6s 128Gb Plus",
+                "info": "Sell my iphone cause i need money for smth",
+                "category": {
+                                "name": "Smartphones",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "120",
+                "commission": "10", 
+                "startPrice": "100",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "150"
+            },
+            
+            {
+                "Id": "4562804",
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": {
+                                "name": "Laptops",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
+
+        }
+        ]
+        
++ Response 401 (text/plain)
+
+        Please authorize to see this!
++ Response 403 (text/plain)
+
+        You are not Admin. No way to get this.
++ Response 404 (text/plain)
+        
+        No lots yet.
+        
+        
 ##Update lot description  [PATCH /lots/{id}]
 Change information in the lot description
 ## Delete a Lot [DELETE /lots/{id}]
@@ -22,6 +171,47 @@ Change information in the lot description
     + id (string) ... Id of the lot
 
 + Response 204
+
+#POST Create a lot [POST]
+
++ Request (application/json)
+
+        {
+      
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": {
+                                "name": "Laptops",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
+        }
+
++ Response 201
+
+        {
+                "Id": "4562804",
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": {
+                                "name": "Laptops",
+                                "parentCategory": "Electronics"
+                            },
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
+
+        }
 
 ## Bids [/bids]
 
