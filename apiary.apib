@@ -7,27 +7,6 @@ SpeedSell is a resource that shows main features of it's parts (Lots,
 Bids, Feedbacks and Payments.
 
 ## Lots [/lots]
-###Show all available lots [GET]
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "Id": "4562803",
-                "name": "Apple Iphone 6s 128Gb Plus",
-                "info": "Sell my iphone cause i need money for smth",
-                "category": "3",
-                "state": "CREATED",
-                "buyPrice": "120",
-                "commission": "10", 
-                "startPrice": "100",
-                "startDate": "2016-07-12T09:00:00",
-                "duration": "3600",
-                "redemtion": "150"
-            }
-        ]
-
-
 ### Create new lot [POST]
 Creating new lot.
 
@@ -66,6 +45,34 @@ Creating new lot.
                 "duration": "3600",
                 "redemtion": "1500"
             }
+
+#GET /lots/?offset=20&limit=20
+
++ Response 200 (application/json) 
+
+            [   
+            "Links":{
+                    "/lots/?offset=40&limit=20"; rel="next",
+                    "/lots/?offset=0&limit=20"; rel="prev",
+                    }
+                
+            {
+                "Id": "4562803",
+                "name": "Apple Iphone 6s 128Gb Plus",
+                "info": "Sell my iphone cause i need money for smth",
+                "category": "3",
+                "state": "CREATED",
+                "buyPrice": "120",
+                "commission": "10", 
+                "startPrice": "100",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "150"
+            }
+        ]
+    
+
+
             
 #DELETE /.../lots/{id}
 Deleting lot by id.
@@ -149,7 +156,7 @@ Show all lots created by some user
         No lots yet.
         
 
-#GET /categories/{id}/lots
+#GET /categories/{id}/?offset=20&limit=20
 Show all lots in some category
 
 + Parameters
@@ -157,6 +164,10 @@ Show all lots in some category
 + Response 200 (application/json)
 
         [
+            "Links":{
+                    "/lots/?offset=40&limit=20"; rel="next",
+                    "/lots/?offset=0&limit=20"; rel="prev",
+                    }
             {
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
@@ -213,13 +224,14 @@ User can choose the lot and make his pown bid
         }
 
 + Response 201 (application/json)
-
+    
+    
     + Headers
-
+    
             Location: /bids/32
-
+    
     + Body
-
+    
             {
                 "Id":"2345124",
                 "bidDate": "2016-10-10T10:00:00",
@@ -229,12 +241,16 @@ User can choose the lot and make his pown bid
             }
 
 
-#GET /users/{id}/bids
+#GET /users/{id}/bids?offset=5&limit=5
 You can get list of all bids made by some user.
 
 + Response 200 (application/json)
 
         [
+        "Links":{
+                    "/lots/?offset=10&limit=5"; rel="next",
+                    "/lots/?offset=0&limit=5"; rel="prev",
+                    }
         {
             "Id":"2345123",
             "bidDate": "2016-10-10T09:00:00",
@@ -455,13 +471,41 @@ Show feedbacks writed for some lot.
         No feedbacks yet.
 
 
-## Payments [/payments]
-###List of payments [GET]
+## Payments [/]
+
+### Create a Payment [POST]
+
++ Request (application/json)
+
+        {
+                "paymentAmount": "322",
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+        }
+
++ Response 201 (application/json)
+
+        {
+                "Id": "12481632",
+                "paymentAmount": "322",
+                "payDate": "2016-07-18T1:58:00.620Z"
+                "personId": "1234567"
+                "lotId": "457861"
+                "paymentTypeId": "1"
+        }
+
+
+#GET /payments/?offset=15&limit=15
 Show list of payments
 
 + Response 200 (application/json)
 
         [
+        "Links":{
+                    "/lots/?offset=30&limit=15"; rel="next",
+                    "/lots/?offset=0&limit=15"; rel="prev",
+                    }
            {
                 "Id": "12481632",
                 "paymentAmount": "322",
@@ -484,27 +528,6 @@ Show list of payments
 
         Not found.
         
-### Create a Payment [POST]
-
-+ Request (application/json)
-
-        {
-                "paymentAmount": "322",
-                "personId": "1234567"
-                "lotId": "457861"
-                "paymentTypeId": "1"
-        }
-
-+ Response 201 (application/json)
-
-        {
-                "Id": "12481632",
-                "paymentAmount": "322",
-                "payDate": "2016-07-18T1:58:00.620Z"
-                "personId": "1234567"
-                "lotId": "457861"
-                "paymentTypeId": "1"
-        }
 
 #GET /users/{id}/payments
 Show list of user's payments.
@@ -601,7 +624,7 @@ Show list of categories
             }
         ]
         
-+ Responce 201 (application/json)
++ Response 201 (application/json)
 
         [
             {
