@@ -481,10 +481,10 @@ Show list of payments
         You are not Admin. No way to get this.
     
 + Response 404 (text/plain)
-    
-        No payments yet.
 
-## Create a Payment [POST]
+        Not found.
+        
+### Create a Payment [POST]
 
 + Request (application/json)
 
@@ -509,8 +509,6 @@ Show list of payments
 #GET /users/{id}/payments
 Show list of user's payments.
 
-+ Parameters
-    + id: `1` (number, required) - Id of a user.
 + Response 200 (application/json)
 
         [
@@ -539,16 +537,14 @@ Show list of user's payments.
 
         You are not Admin. No way to get this.
 + Response 404 (text/plain)
-        
-        No payments yet.
 
+        No payments yet.
+        
 # GET /payments/{id}
 Get payment by id.
 
-+ Parameters
-    + id: `1` (number, required) - Id of a payment.
 + Response 200 (application/json)
-        
+
         [
             {
                 "Id": "12481632",
@@ -563,8 +559,65 @@ Get payment by id.
 
         Please authorize to see this!
 + Response 403 (text/plain)
-    
-        You are not Admin. No way to get this.
+
+        You are not allowed to do this.
 + Response 404 (text/plain)
+
+        Not found.
         
-        No payments yet.
+## Categories [/categories]
+###List of categories [GET]
+Show list of categories
+
++ Responce 200 (application/json)
+
+        [
+            {
+                "Id": "1",
+                "Name": "Dogs",
+                "ParentId": "Animals"
+            }
+        ]
++ Response 401 (text/plain)
+
+        Please authorize to see this!
+    
++ Response 403 (text/plain)
+
+        You are not Admin. No way to get this.
+    
++ Response 404 (text/plain)
+
+        Not found.
+        
+###Create a category [POST]
+
++ Request (application/json)
+
+        [
+            {
+                "Name": "NameCat",
+                "ParentId": "2"
+            }
+        ]
+        
++ Responce 201 (application/json)
+
+        [
+            {
+                "Id": "6",
+                "Name": "NameCat",
+                "ParentId": "2"
+            }
+        ]
++ Response 401 (text/plain)
+
+        Please authorize to see this!
+    
++ Response 403 (text/plain)
+
+        You are not Admin. No way to get this.
+    
++ Response 404 (text/plain)
+
+        Not found.
