@@ -352,25 +352,9 @@ If user change his mind  and he can cancel his bid
 
 
 ## Feedbacks [/feedbacks]
-###List of all feedbacks [GET]
 
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "Id": "7531864",
-                "buyerId": "95431764",
-                "sellerId": "7564218",
-                "lotId" : "457861",
-                "mark" : "good",
-                "title" : "Everything was ok",
-                "feedback" : "Fast responce, good lot"
-            }
-        ]
-        
 ### Create new feedback [POST]
-Creating new feedback.
+Creating new feedback. Accessible for user's and admin.
 
 + Request (application/json)
 
@@ -400,28 +384,61 @@ Creating new feedback.
                 "title" : "Fast send, lot is not so good",
                 "feedback" : "Fast send, lot is not so good"
             }
+            
++ Response 401 (text/plain)
 
+        Please authorize to make new feedback!
+        
+#GET /feedbacks?offset=5&limit=5
+Getting all feedbacks. Accessible only for admin.
+
++ Response 200 (application/json)
+
+        [
+            "Links":{
+                    "/lots/?offset=10&limit=5"; rel="next",
+                    "/lots/?offset=0&limit=5"; rel="prev"
+                    },
+            {
+                    
+                "Id": "7531864",
+                "buyerId": "95431764",
+                "sellerId": "7564218",
+                "lotId" : "457861",
+                "mark" : "good",
+                "title" : "Everything was ok",
+                "feedback" : "Fast responce, good lot"
+            }
+        ]
+            
++ Response 401 (text/plain)
+
+        Please authorize to make new feedback!        
 
 #DELETE /feedbacks/{id}
-Deleting feedback by id.
+Deleting feedback by id. Accessible for user's and admin.
 
 + Response 204 (application/json)
    
         
 + Response 401 (text/plain)
 
-        Please authorize to see this!
+        Please authorize to delete feedback!
         
 + Response 404 (text/plain)
 
-        No such feedback.
+        There is no such feedback.
 
-#GET /users/{id}/feedbacks
-Show feedbacks performed by/for some user.
+#GET /users/{id}/feedbacks?offset=5&limit=5
+Show feedbacks performed by/for some user. Accessible for user's and admin.
        
 + Response 200 (application/json)
 
         [
+            "Links":{
+                    "/lots/?offset=10&limit=5"; rel="next",
+                    "/lots/?offset=0&limit=5"; rel="prev"
+                    },
             {
                 "Id": "7531864",
                 "buyerId": "95431764",
@@ -443,12 +460,16 @@ Show feedbacks performed by/for some user.
 
         No feedbacks yet.
 
-#GET /lots/{id}/feedbacks
-Show feedbacks writed for some lot.
+#GET /lots/{id}/feedbacks?offset=5&limit=5
+Show feedbacks writed for some lot. Accessible for user's and admin.
        
 + Response 200 (application/json)
 
         [
+            "Links":{
+                    "/lots/?offset=10&limit=5"; rel="next",
+                    "/lots/?offset=0&limit=5"; rel="prev"
+                    }
             {
                 "Id": "7531864",
                 "buyerId": "95431764",
