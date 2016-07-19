@@ -529,12 +529,16 @@ Show list of payments
         Not found.
         
 
-#GET /users/{id}/payments
+#GET /users/{id}/payments/?offset=15&limit=15
 Show list of user's payments.
 
 + Response 200 (application/json)
 
         [
+         "Links":{
+                    "/lots/?offset=30&limit=15"; rel="next",
+                    "/lots/?offset=0&limit=15"; rel="prev",
+                    }
             {
                 "Id": "12481632",
                 "paymentAmount": "322",
