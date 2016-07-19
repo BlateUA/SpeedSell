@@ -417,7 +417,6 @@ Creating new feedback.
 + Request (application/json)
 
         {
-            "Id": "457812",
             "buyerId": "6548987",
             "sellerId": "1234566",
             "lotId" : "564194",
@@ -445,21 +444,11 @@ Creating new feedback.
             }
 
 
-###Delete feedback [DELETE]
+#DELETE /feedbacks/{id}
 Deleting feedback by id.
 
-+ Request (application/json)
-
-        {
-            "Id": "457812",
-        }
-        
-
-+ Response 200 (application/json)
-
-        {
-            "OK" : "Feedback successfully deleted"
-        }
++ Response 204 (application/json)
+   
         
 + Response 401 (text/plain)
 
@@ -566,7 +555,6 @@ Show list of payments
 + Request (application/json)
 
         {
-                "Id": "12481632",
                 "paymentAmount": "322",
                 "personId": "1234567"
                 "lotId": "457861"
