@@ -16,10 +16,7 @@ Bids, Feedbacks and Payments.
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
                 "info": "Sell my iphone cause i need money for smth",
-                "category": {
-                                "name": "Smartphones",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "3",
                 "state": "CREATED",
                 "buyPrice": "120",
                 "commission": "10", 
@@ -39,11 +36,7 @@ Creating new lot.
         {
                 "name": "Lenovo ThinkPad E430c",
                 "info": "New laptop for home usage",
-                "category": {
-                                "name": "Laptops",
-                                "parentCategory": "Electronics"
-                            },
-                "state": "CREATED",
+                "category": "2",
                 "buyPrice": "1200",
                 "commission": "30", 
                 "startPrice": "1000",
@@ -61,38 +54,24 @@ Creating new lot.
     + Body
     
             {
-            "Id": "4562804",
-            "name": "Lenovo ThinkPad E430c",
-            "info": "New laptop for home usage",
-            "category": {
-            "name": "Laptops",
-            "parentCategory": "Electronics"
-            },
-            "state": "CREATED",
-            "buyPrice": "1200",
-            "commission": "30", 
-            "startPrice": "1000",
-            "startDate": "2016-07-12T09:00:00",
-            "duration": "3600",
-            "redemtion": "1500"
+                "Id": "4562804",
+                "name": "Lenovo ThinkPad E430c",
+                "info": "New laptop for home usage",
+                "category": "2",
+                "state": "CREATED",
+                "buyPrice": "1200",
+                "commission": "30", 
+                "startPrice": "1000",
+                "startDate": "2016-07-12T09:00:00",
+                "duration": "3600",
+                "redemtion": "1500"
             }
             
-###Delete lot [DELETE]
+#DELETE /.../lots/{id}
 Deleting lot by id.
 
-+ Request (application/json)
++ Response 204 (application/json)
 
-        {
-            "Id": "4562804",
-        }
-        
-
-+ Response 200 (application/json)
-
-        {
-            "OK" : "Lot successfully deleted"
-        }
-        
 + Response 401 (text/plain)
 
         Please authorize to see this!
@@ -111,10 +90,7 @@ Show one particular lot
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
                 "info": "Sell my iphone cause i need money for smth",
-                "category": {
-                                "name": "Smartphones",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "3",
                 "state": "CREATED",
                 "buyPrice": "120",
                 "commission": "10", 
@@ -137,10 +113,7 @@ Show all lots created by some user
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
                 "info": "Sell my iphone cause i need money for smth",
-                "category": {
-                                "name": "Smartphones",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "3",
                 "state": "CREATED",
                 "buyPrice": "120",
                 "commission": "10", 
@@ -154,10 +127,7 @@ Show all lots created by some user
                 "Id": "4562804",
                 "name": "Lenovo ThinkPad E430c",
                 "info": "New laptop for home usage",
-                "category": {
-                                "name": "Laptops",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "2",
                 "state": "CREATED",
                 "buyPrice": "1200",
                 "commission": "30", 
@@ -188,14 +158,10 @@ Show all lots in some category
 
         [
             {
-               {
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
                 "info": "Sell my iphone cause i need money for smth",
-                "category": {
-                                "name": "Smartphones",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "3",
                 "state": "CREATED",
                 "buyPrice": "120",
                 "commission": "10", 
@@ -209,10 +175,7 @@ Show all lots in some category
                 "Id": "4562804",
                 "name": "Lenovo ThinkPad E430c",
                 "info": "New laptop for home usage",
-                "category": {
-                                "name": "Laptops",
-                                "parentCategory": "Electronics"
-                            },
+                "category": "2",
                 "state": "CREATED",
                 "buyPrice": "1200",
                 "commission": "30", 
@@ -220,8 +183,7 @@ Show all lots in some category
                 "startDate": "2016-07-12T09:00:00",
                 "duration": "3600",
                 "redemtion": "1500"
-
-        }
+            }
         ]
         
 + Response 401 (text/plain)
@@ -233,7 +195,7 @@ Show all lots in some category
 + Response 404 (text/plain)
         
         No lots yet.
-        
+
 
 
 
@@ -269,11 +231,6 @@ User can choose the lot and make his pown bid
 
 #GET /users/{id}/bids
 You can get list of all bids made by some user.
-+ Request (application/json)
-
-        {
-            "ownerId": "7531864"
-        }
 
 + Response 200 (application/json)
 
@@ -309,11 +266,6 @@ You can get list of all bids made by some user.
         
 #GET /lots/{id}/bids
 Show the history of bids, who and when made bids.
-+ Request (application/json)
-
-        {
-            "lotId": "457861"
-        }
 
 + Response 200 (application/json)
 
@@ -342,15 +294,8 @@ Show the history of bids, who and when made bids.
         { 
             "error": "Resource not found" 
         }
-#GET /lot/{id}/best/        
+#GET /lots/{id}/best/        
 Returns the best bid of lot
-
-+ Request (application/json)
-
-        {
-            "lotId": "457861"
-        }
-
 
 + Response 200 (application/json)
 
@@ -372,11 +317,7 @@ Returns the best bid of lot
 #DELETE /bids/{id}
 If user change his mind  and he can cancel his bid 
 
-+ Request (application/json)
-
-        {
-            "lotId": "457861"
-        }
++ Response 204 
 
 + Response 200 (text/plain)
 
@@ -391,6 +332,7 @@ If user change his mind  and he can cancel his bid
                 Not Found
             
         }
+
 
 
 ## Feedbacks [/feedbacks]
