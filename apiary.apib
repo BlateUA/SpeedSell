@@ -428,11 +428,11 @@ Creating new feedback.
 + Response 201 (application/json)
 
     + Headers
-
+            
             Location: /feedbacks/457812
-
+    
     + Body
-
+            
             {
                 "Id": "457812",
                 "buyerId": "6548987",
@@ -461,10 +461,6 @@ Deleting feedback by id.
 #GET /users/{id}/feedbacks
 Show feedbacks performed by/for some user.
        
-+ Parameters
-
-    + Id: `1` (number, required) - Id of a user.
-    
 + Response 200 (application/json)
 
         [
@@ -492,10 +488,6 @@ Show feedbacks performed by/for some user.
 #GET /lots/{id}/feedbacks
 Show feedbacks writed for some lot.
        
-+ Parameters
-
-    + id: `1` (number, required) - Id of a lot.
-    
 + Response 200 (application/json)
 
         [
@@ -573,8 +565,8 @@ Show list of payments
         }
 
 #GET /users/{id}/payments
+Show list of user's payments.
 
-        Show list of user's payments.
 + Parameters
     + id: `1` (number, required) - Id of a user.
 + Response 200 (application/json)
@@ -609,8 +601,8 @@ Show list of payments
         No payments yet.
 
 # GET /payments/{id}
+Get payment by id.
 
-        Get payment by id.
 + Parameters
     + id: `1` (number, required) - Id of a payment.
 + Response 200 (application/json)
