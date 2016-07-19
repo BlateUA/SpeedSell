@@ -50,11 +50,11 @@ Creating new lot.
 
 + Response 200 (application/json) 
 
-            [   
+        [   
             "Links":{
                     "/lots/?offset=40&limit=20"; rel="next",
-                    "/lots/?offset=0&limit=20"; rel="prev",
-                    }
+                    "/lots/?offset=0&limit=20"; rel="prev"
+                    },
                 
             {
                 "Id": "4562803",
@@ -110,8 +110,6 @@ Show one particular lot
 #GET /users/{id}/lots
 Show all lots created by some user
 
-+ Parameters
-    + id: `1` (number, required) - Id of a user.
 + Response 200 (application/json)
 
         [
@@ -159,15 +157,13 @@ Show all lots created by some user
 #GET /categories/{id}/?offset=20&limit=20
 Show all lots in some category
 
-+ Parameters
-    + id: `1` (number, required) - Id of a category.
 + Response 200 (application/json)
 
         [
             "Links":{
                     "/lots/?offset=40&limit=20"; rel="next",
-                    "/lots/?offset=0&limit=20"; rel="prev",
-                    }
+                    "/lots/?offset=0&limit=20"; rel="prev"
+                    },
             {
                 "Id": "4562803",
                 "name": "Apple Iphone 6s 128Gb Plus",
@@ -249,8 +245,8 @@ You can get list of all bids made by some user.
         [
         "Links":{
                     "/lots/?offset=10&limit=5"; rel="next",
-                    "/lots/?offset=0&limit=5"; rel="prev",
-                    }
+                    "/lots/?offset=0&limit=5"; rel="prev"
+                    },
         {
             "Id":"2345123",
             "bidDate": "2016-10-10T09:00:00",
@@ -525,8 +521,8 @@ Show list of payments
         [
         "Links":{
                     "/lots/?offset=30&limit=15"; rel="next",
-                    "/lots/?offset=0&limit=15"; rel="prev",
-                    }
+                    "/lots/?offset=0&limit=15"; rel="prev"
+                    },
            {
                 "Id": "12481632",
                 "paymentAmount": "322",
@@ -558,8 +554,8 @@ Show list of user's payments.
         [
          "Links":{
                     "/lots/?offset=30&limit=15"; rel="next",
-                    "/lots/?offset=0&limit=15"; rel="prev",
-                    }
+                    "/lots/?offset=0&limit=15"; rel="prev"
+                    },
             {
                 "Id": "12481632",
                 "paymentAmount": "322",
